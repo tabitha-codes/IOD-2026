@@ -1,11 +1,11 @@
 * {
-    box-sizing: border -box;
+    box-sizing: border-box;
     margin:
         0;
 }
 
 body {
-    font-family: sans -serif;
+    font-family: sans-serif;
 }
 
 header {
@@ -17,21 +17,24 @@ header {
 
 nav {
     background-color: gold;
-    width: 30%;
-    height: 300px;
+    width: 20%;
+    height: 400px;
     padding: 20px;
-
+    float: left;
 }
 
 article {
     background-color: whitesmoke;
-    width: 70%;
+    width: 80%;
     padding: 20px;
+    float: left;  
 }
 
 aside {
     clear: both;
-}
+    padding:20px;
+    background-color: green;  /*changes made for slide 59*/
+} 
 
 footer {
     background: #222;
