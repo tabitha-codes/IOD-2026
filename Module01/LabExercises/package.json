@@ -1,0 +1,12 @@
+{
+  "name": "labexercises",
+  "version": "1.0.0",
+  "description": "module 01 exercises",
+  "license": "ISC",
+  "author": "Tabitha",
+  "type": "commonjs",
+  "main": "exercise5.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
