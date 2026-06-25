@@ -1,0 +1,86 @@
+.body {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+header {
+    background-color: #555555;
+    color: white;
+    text-align: center;
+    padding: 3px;
+    bottom: 0;
+    width: 100%;
+}
+
+nav {
+    background-color: #555555;
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 3px;
+    bottom: 0;
+    width: 100%;
+}
+
+.section {
+    align-items: center;
+    padding: 3px;
+    bottom: 0;
+    width: 100%;
+}
+
+.dice-row {
+    display: flex;
+    /* puts cards side by side */
+    gap: 20px;
+    /* space between them */
+}
+
+.dice-card {
+    display: flex;
+    flex-direction: column;
+    /* image on top, button below */
+    align-items: center;
+    padding: 3px;
+    bottom: 0;
+    width: 100%;
+}
+
+img.one {
+    height: 200px;
+}
+
+img.two {
+    height: 200px;
+}
+
+img.three {
+    height: 200px;
+}
+
+button {
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #555555;
+    color: white;
+    text-align: center;
+    padding: 3px;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
