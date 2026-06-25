@@ -4,7 +4,7 @@
   "description": "module 01 exercises",
   "license": "ISC",
   "author": "Tabitha",
-  "type": "commonjs",
+  "type": "module",
   "main": "exercise5.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
