@@ -1,0 +1,204 @@
+* {
+    box-sizing: border-box;
+    margin: 5px;
+    color: black;
+}
+
+header { 
+    background-color: grey;
+}
+
+.navbar {
+background-color: grey;
+color: black;
+padding: 3px;
+width: 100%;
+}
+
+/* .nav-item {}
+.nav-link {} */
+
+/* HERO SECTION */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background-color: #0a0700;
+    margin: 0;
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse 52% 115% at 20% 50%,
+        rgba(10, 7, 0, 0.95) 0%,
+        rgba(10, 7, 0, 0.68) 38%,
+        rgba(10, 7, 0, 0.10) 65%,
+        transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+    margin: 0;
+}
+
+.hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2.5rem;
+    margin: 0;
+}
+
+.hero-eyebrow {
+    font-family: monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #f59e0b;
+    margin-bottom: 0.6rem;
+    display: block;
+    opacity: 0;
+    animation: heroFadeUp 0.45s ease-out 0.55s forwards;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #fefce8;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.75rem;
+    opacity: 0;
+    animation: heroFadeUp 0.45s ease-out 0.75s forwards;
+}
+
+.hero-sub {
+    font-size: 0.9rem;
+    color: #c9a96e;
+    line-height: 1.65;
+    max-width: 320px;
+    margin: 0 0 1.5rem;
+    opacity: 0;
+    animation: heroFadeUp 0.45s ease-out 0.95s forwards;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #0a0700;
+    background-color: #f59e0b;
+    padding: 10px 22px;
+    border-radius: 4px;
+    text-decoration: none;
+    width: fit-content;
+    opacity: 0;
+    animation: heroFadeUp 0.45s ease-out 1.1s forwards;
+    transition: background-color 0.2s;
+}
+
+.cta-btn:hover {
+    background-color: #d97706;
+    color: #0a0700;
+}
+
+@keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+body {
+ background-color: rgb(150, 100, 100);
+}
+
+/* Style inputs */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+footer {
+    background-color: grey;
+    color: black;
+    text-align: center;
+    padding: 3px;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

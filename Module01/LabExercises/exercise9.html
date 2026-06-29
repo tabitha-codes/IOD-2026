@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Draft Website for Tabitha Miller">
+    <meta name="keywords" content="Portfolio - HTML, CSS, JavaScript">
+    <meta name="author" content="Tabitha Miller">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="exercise9.css">
+    <title>Tabithas Personal Bio</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <li class="nav-item">
+                <a class="nav-link" href="#">home</a>
+                <a class="nav-link" href="#about">about</a>
+                <a class="nav-link" href="#projects">projects</a>
+                <a class="nav-link" href="#resume">resume</a>
+                <a class="nav-link" href="#contact">contact</a>
+            </li>
+        </nav>
+    </header>
+
+    <h1>Hi, my name is Tabitha! I'm a Software developer and UX designer.</h1>
+
+    <!-- HERO SECTION -->
+    <section>
+      <section class="hero-section">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="hero-eyebrow">Frontend Development · UX Design</span>
+        <h2 class="hero-title">Tabitha</h2>
+        <p class="hero-sub">Turning ideas into clean interfaces,<br>one commit at a time.</p>
+        <a href="#projects" class="cta-btn">View my work →</a>
+    </div>
+</section>
+        <h2 id="about">About me section.</h2>
+        <h2 id="projects">Projects section.</h2>
+        <h2 id="resume">Resume.</h2>
+        <p>Key Summary section.</p>
+        <p>Education section.</p>
+        <p>Work Experience section.</p>
+        <h2 id="contact">Contact me section.</p>
+
+            <!-- CONTACT ME FORM -->
+            <div class="container">
+                <div style="text-align:center">
+                    <h2>Contact Me</h2>
+                </div>
+                <div class="row">
+                    <div class="column">
+                    </div>
+                    <div class="column">
+                        <form action="/action_page.php">
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                            <label for="subject">Subject</label>
+                            <textarea id="subject" name="subject" placeholder="Write something.."
+                                style="height:170px"></textarea>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <footer>
+        Built by Tabitha Miller. 2026
+    </footer>
+    <script src="exercise9.js"></script>
+</body>
+
+</html>
