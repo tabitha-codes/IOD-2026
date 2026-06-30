@@ -69,7 +69,7 @@ a {
 /* 4. Assigning leftover space */
 .flex-space-between {
     justify-content: space-between; 
-
+}
 /* 5. Wrapping items */
 .flex-wrap {
     flex-wrap: wrap; 
