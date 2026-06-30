@@ -1,0 +1,118 @@
+
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: purple;
+}
+
+.background-1 {
+    background: #68B0AB;
+}
+
+.background-2 {
+    background: #8FC0A9;
+}
+
+.background-3 {
+    background: #C8D5B9;
+}
+
+.background-4 {
+    background: #FAF3DD;
+}
+
+.m-20 {
+    margin: 20px;
+}
+
+.h-80 {
+    height: 80px;
+}
+
+.h-400 {
+    height: 400px;
+}
+
+.w-80 {
+    width: 80px;
+}
+/* LAB 3 - FLEXBOX */
+/* 2. Basic flexbox */
+.flex-container {
+    display: flex; /* 2.1 Set container to use flexbox */
+}
+
+/* 2.2 Individual flex growth items */
+.flex-item-1 {
+    flex: 1;
+}
+.flex-item-2 {
+    flex: 2;
+}
+.flex-item-3 {
+    flex: 3;
+}
+.flex-item-4 {
+    flex: 4;
+}
+
+/* 3. Centering with flexbox */
+.flex-center {
+    justify-content: center; /* Horizontally centers content */
+    align-items: center;     /* Vertically centers content */
+}
+
+/* 4. Assigning leftover space */
+.flex-space-between {
+    justify-content: space-between; 
+
+/* 5. Wrapping items */
+.flex-wrap {
+    flex-wrap: wrap; 
+}
+
+/* Matches the class name in my provided HTML */
+.flex-basis-item-50 {
+    flex-basis: 50%; /* 5.1 Sets item width to 50% */
+}
+
+.flex-basis-item-50 {
+    flex-basis: 25%;
+}
+
+/* 6. Changing direction */
+.flex-container {
+     display: flex;
+    flex-direction: row; 
+}
+
+/* 7. Flexbox for horizontal navigation */
+.flex-menu {
+    list-style: none; /* Removes bullet points from the ul */
+    padding: 0;
+    margin: 0;
+    
+    /* 7.2 To align items right: justify-content: flex-end; */
+    /* 7.3 To align items center: justify-content: center; */
+    justify-content: flex-end; 
+}
+
+/* 7.4 Target the fourth item - move it to the very end */
+.flex-menu .fourth-item {
+    order: 5; 
+}
+
+/* 7.5  */
+.flex-menu li {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.flex-menu li a {
+    display: block;
+    text-decoration: none;
+}
