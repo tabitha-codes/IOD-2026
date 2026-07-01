@@ -1,0 +1,151 @@
+/*  RESET & BASE STYLES */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* FLEXBOX LAYOUT CONTAINER */
+.resume-container {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 40px); /* Leaves space for footer */
+}
+
+/* SIDEBAR (LEFT COLUMN) */
+.sidebar {
+    width: 300px;
+    background-color: #6A77D2; /* Purple/Blue accent color from image */
+    color: #000000;
+    padding: 20px;
+}
+
+.profile-section h1 {
+    font-size: 1.4rem;
+    margin-top: 0;
+}
+
+/* Image styling with border-radius to create circle */
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    background-color: #555; /* Default background placeholder */
+    border-radius: 50%;     /* Makes it a circle */
+    margin: 20px auto;
+    display: block;
+    object-fit: cover; /* Keeps image from distorting inside the circle */
+}
+
+
+.info-section h2, .skills-section h2 {
+    font-size: 1.2rem;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
+.info-section a {
+    color: #0000ee;
+    text-decoration: underline;
+}
+
+/* Flexbox to separate skill name from proficiency status */
+.skill-row {
+    display: flex;
+    justify-content: space-between; /* Spacing elements into opposite corners */
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.skill-level {
+    font-style: italic;
+}
+
+/* MAIN CONTENT (RIGHT COLUMN) */
+.main-content {
+    flex: 1; /* Occupies remaining width space */
+    padding: 30px;
+}
+
+.main-content h2 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.company-date {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.job-entry, .edu-entry {
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+ul {
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* FOOTER */
+footer {
+    background-color: #6A77D2;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+/* LAB 5 - RESPONSIVE STYLES // MEDIA QUERY */
+@media screen and (max-width: 768px) {
+    /* 1. Change the flexbox layout container to a column stack */
+    .resume-container {
+        flex-direction: column;
+    }
+
+    /* 2. Scale the sidebar to full width and center its structural text elements */
+    .sidebar {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 3. Center align subtitles and profile presentation details */
+    .subtitle {
+        text-align: center;
+    }
+
+    /* 4. Keep the multi-column format for skill rows but adjust padding */
+    .skill-row {
+        padding: 0 10px;
+    }
+
+    /* 5. Tweak primary content spacing for smaller visual layout constraints */
+    .main-content {
+        padding: 20px;
+    }
+}
