@@ -1,29 +1,29 @@
 // 3. Which of the following console.log messages will print? Why?
-if (0) console.log('#1 zero is true')
+//  if (0) console.log('#1 zero is true')
 
 /*My Answer: no - nothing declared.
 Output: didn't print
 */
 
-if ("0") console.log('#2 zero is true')
+//  if ("0") console.log('#2 zero is true')
 
     /*My Answer: no - nothing declared.
 Output: #2 zero is true
 */
 
-if (null) console.log('null is true')
+//  if (null) console.log('null is true')
 
 /*My Answer: yes, - nothing declared.
 Output: didn't print
 */
 
-if (-1) console.log('negative is true')
+// if (-1) console.log('negative is true')
 
 /*My Answer: no - nothing declared.
 Output: negative is true
 */
 
-if (1) console.log('positive is true')
+// if (1) console.log('positive is true')
 
 /*My Answer: no - nothing declared.
 Output: positive is true
