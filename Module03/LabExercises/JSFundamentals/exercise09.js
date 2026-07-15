@@ -19,19 +19,6 @@ let dog1 = 'Bingo';
 let cat1 = { name: 'Fluffy', breed: 'Siberian' };
  // console.log(teamSports, dog1, cat1);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* My Answers:
 
 A] let moreSports = teamSports;

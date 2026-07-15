@@ -16,8 +16,109 @@ if the person is old enough to drive.
 
 */
 
+
+function Person(name, age) {
+this.name = name;
+this.age = age;
+this.human = true;
+}
+
+/* My Answers:
+
+A] 
+let person1 = new Person("Tabitha", 32);
+let person2 = new Person("Brittany", 40);
+
 function Person(name, age) {
   this.name = name;
   this.age = age;
   this.human = true;
 }
+console.log(person1);
+console.log(person2);
+
+Output:
+Person { name: 'Tabitha', age: 32, human: true }
+Person { name: 'Brittany', age: 40, human: true }
+============================
+B]
+let person1 = new PersonClass("Tabitha", 32);
+let person2 = new PersonClass("Brittany", 40);
+let person3 = new PersonClass("Susan", 15);
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.human = true;
+}
+
+console.log(person1);
+console.log(person2);
+console.log(person3);
+
+
+============================
+C]
+console.log(person1);
+console.log(person2);
+console.log(person3);
+
+
+============================
+D]
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.human = true;
+}
+
+class PersonClass {
+  constructor(name, age) {
+  this.name = name;
+  this.age = age;
+  this.human = true;
+  }
+}
+
+let person1 = new PersonClass("Tabitha", 32);
+let person2 = new PersonClass("Brittany", 40);
+let person3 = new PersonClass("Susan", 15);
+
+console.log(person1);
+console.log(person2);
+console.log(person3);
+============================
+E]
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.human = true;
+  this.canDrive = function() {
+    return this.age >= 16;
+  }
+}
+
+class PersonClass {
+  constructor(name, age) {
+  this.name = name;
+  this.age = age;
+  this.human = true;
+  }
+  canDrive() {
+    return this.age >= 16;
+  }
+}
+
+let person1 = new PersonClass("Tabitha", 32);
+let person2 = new PersonClass("Brittany", 40);
+let person3 = new PersonClass("Susan", 15);
+
+console.log(person1.canDrive());
+console.log(person2.canDrive());
+console.log(person3.canDrive());
+
+Output: 
+true
+true
+false 
+*/
