@@ -16,23 +16,6 @@ const sydney = {
   timezone: "Australia/Sydney",
 };
 
-const memphis = {
-  name: "Memphis",
-  population: 610_000,
-  state: "USA",
-  founded: "22 May 1819",
-  timezone: "Central Standard Time",
-};
-
-function printCity(city) { 
-for (let key in city) { // iterates over each property in the phone object, stores in ‘key’ variable
-console.log('key: ' + key); // prints each object property name (key) in turn
-console.log('value: ' + city[key]); // prints each object value in turn
-}
-}
-printCity(sydney);
-printCity(memphis);
-
 /* My Answer:
 a)
 const sydney = {
