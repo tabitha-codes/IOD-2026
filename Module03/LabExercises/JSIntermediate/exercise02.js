@@ -7,7 +7,17 @@ b) Write another variant of the truncate function that uses a conditional operat
 console.log(truncate('This text will be truncated if it is too long', 25))
 // This text will be truncat...
 
+
 /*
 MY ANSWERS:
+function truncate(str, maxLength) {
+    if (str.length > maxLength) {
+        return str.substring(0, maxLength) + '...';
+    }
+    return str;
+}
 
+console.log(truncate('This text will be truncated if it is too long', 25))
+
+Output: This text will be truncat...
 */
