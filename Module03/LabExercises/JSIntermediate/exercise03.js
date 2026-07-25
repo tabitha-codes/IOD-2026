@@ -18,27 +18,70 @@ regardless of upper/lower case. */
 const animals = ['Tiger', 'Giraffe']
 console.log(animals)
 
+
 /*
 MY ANSWERS:
 
-A]
+A] const animals = ['Tiger', 'Giraffe']
+animals.push("Chickens", "Cats");
+console.log(animals)
 
-OUTPUT:
+OUTPUT: [ 'Tiger', 'Giraffe', 'Chickens', 'Cats']
 =====================================
-B]
+B] const animals = ['Tiger', 'Giraffe']
+animals.unshift("Lion", "Pig", "Monkeys");
+console.log(animals)
 
-OUTPUT:
+OUTPUT: [ 'Lion', 'Pig', 'Monkeys', 'Tiger', 'Giraffe' ]
 =====================================
-C]
+C] const animals = ['Tiger', 'Giraffe']
+animals.push("Chickens", "Cats");
+animals.unshift("Lion", "Pig", "Monkeys");
+animals.sort();
+console.log(animals);
 
-OUTPUT:
+OUTPUT: ['Cats', 'Chickens', 'Giraffe','Lion', 'Monkeys','Pig', 'Tiger']
 =====================================
-D]
+D] const animals = ['Tiger', 'Giraffe', 'Chicken']
 
-OUTPUT:
+animals.push("Chickens", "Cats");
+
+animals.unshift("Lion", "Pig", "Monkeys");
+
+animals.sort();
+
+function replaceMiddleAnimal(newValue) {
+
+const middleIndex = Math.floor(animals.length / 2);
+
+animals[4] = (newValue);
+
+};
+
+replaceMiddleAnimal('Dolphin');
+
+console.log(animals);
+
+
+OUTPUT: Before - ['Cats', 'Chickens', 'Giraffe', 'Lion', 'Monkeys','Pig', 'Tiger']
+After -  ['Cats', 'Chickens', 'Giraffe', 'Dolphin', 'Monkeys','Pig', 'Tiger']
+replaced Lion (4) with Dolphin
 =====================================
-E]
+E] const animals = ['Tiger', 'Giraffe', 'Chicken']
 
-OUTPUT:
+animals.push("Chickens", "Cats");
+
+animals.unshift("Lion", "Pig", "Monkeys");
+
+animals.sort();
+
+function findMatchingAnimals(beginsWith) {
+return animals.filter(animal => animal.startsWith(beginsWith))
+  }
+
+console.log(findMatchingAnimals('C'));
+
+
+OUTPUT: [ 'Cats', 'Chicken', 'Chickens' ]
 =====================================
 */
