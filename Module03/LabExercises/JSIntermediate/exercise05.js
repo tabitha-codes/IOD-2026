@@ -1,14 +1,14 @@
 // 5. Decimal number operations in JavaScript can lead to unexpected results, as in the
 // following:
-let twentyCents = 0.20
-let tenCents = 0.10
-console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
+// let twentyCents = 0.20
+// let tenCents = 0.10
+// console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
 // 0.2 + 0.1 = 0.30000000000000004
 // We can sometimes avoid this using the toFixed function to force the number of decimal
 // places as below, but it’s not always useful:
-let fixedTwenty = twentyCents.toFixed(2);
-let fixedTen = tenCents.toFixed(2);
-console.log(fixedTwenty + fixedTen) //why is this not working?
+// let fixedTwenty = twentyCents.toFixed(2);
+// let fixedTen = tenCents.toFixed(2);
+// console.log(fixedTwenty + fixedTen) //why is this not working?
 // a) Explain why the above code returns the wrong answer
 // b) Create a function currencyAddition(float1, float2) which safely adds the two
 // decimal numbers float1 and float2 and returns the correct float result.
@@ -22,19 +22,68 @@ console.log(fixedTwenty + fixedTen) //why is this not working?
 // which allows the operation to support different amounts of decimal places from 1 to 10.
 // HINT: Assume 2 decimal places for b) and c) and use a multiplication factor. Test with
 // different values as well as the below:
-console.log(0.3 == currencyAddition(0.1, 0.2)) // true
+// console.log(0.3 == currencyAddition(0.1, 0.2)) // true
+// console.log(0.3 == currencyOperation(0.1, 0.2, '+')) // true
+
+
+let twentyCents = 0.20
+let tenCents = 0.10
+let fixedTwenty = twentyCents.toFixed(2);
+let fixedTen = tenCents.toFixed(2);
+
+function currencyOperation(float1, float2, operation){
+    const cents1 = Math.round(float1 * 100);
+    const cents2 = Math.round(float2 * 100);
+     switch (operation) {
+        case '+':
+      return (cents1 + cents2) / 100;
+}}
+
+console.log(fixedTwenty + fixedTen)
+console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
+//console.log(0.3 == currencyAddition(0.1, 0.2)) // true
 console.log(0.3 == currencyOperation(0.1, 0.2, '+')) // true
+
+
 
 /*
 MY ANSWERS:
 
 A]
+let twentyCents = 0.20
+let tenCents = 0.10
+let fixedTwenty = twentyCents.toFixed(2);
+let fixedTen = tenCents.toFixed(2);
+
+console.log(fixedTwenty + fixedTen) // not working
+console.log(typeof (0.20).toFixed(2))
+
+toFixed(2) Is returning the wrong answer because it's a string. 
+It's returning a string not a number. 
+When you add a + on two strings concatenates instead of adding the numbers together.
 
 OUTPUT:
+0.200.10
+string
 =====================================
-B]
+B]let twentyCents = 0.20
+let tenCents = 0.10
+let fixedTwenty = twentyCents.toFixed(2);
+let fixedTen = tenCents.toFixed(2);
 
-OUTPUT:
+function currencyAddition(float1, float2){
+    const cents1 = Math.round(float1 * 100);
+    const cents2 = Math.round(float2 * 100);
+    return (cents1 + cents2) / 100;
+}
+
+console.log(fixedTwenty + fixedTen)
+console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
+console.log(0.3 == currencyAddition(0.1, 0.2)) // true
+
+OUTPUT:0.200.10
+0.2 + 0.1 = 0.30000000000000004
+true
 =====================================
 C]
 
