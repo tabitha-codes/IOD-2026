@@ -26,29 +26,7 @@
 // console.log(0.3 == currencyOperation(0.1, 0.2, '+')) // true
 
 
-let twentyCents = 0.20
-let tenCents = 0.10
-let fixedTwenty = twentyCents.toFixed(2);
-let fixedTen = tenCents.toFixed(2);
-
-function currencyOperation(float1, float2, operation){
-    const cents1 = Math.round(float1 * 100);
-    const cents2 = Math.round(float2 * 100);
-     switch (operation) {
-        case '+':
-      return (cents1 + cents2) / 100;
-}}
-
-console.log(fixedTwenty + fixedTen)
-console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
-//console.log(0.3 == currencyAddition(0.1, 0.2)) // true
-console.log(0.3 == currencyOperation(0.1, 0.2, '+')) // true
-
-
-
-/*
-MY ANSWERS:
-
+/* MY ANSWERS:
 A]
 let twentyCents = 0.20
 let tenCents = 0.10
@@ -86,15 +64,87 @@ OUTPUT:0.200.10
 true
 =====================================
 C]
+let twentyCents = 0.20
+let tenCents = 0.10
+let fixedTwenty = twentyCents.toFixed(2);
+let fixedTen = tenCents.toFixed(2);
 
-OUTPUT:
+function currencyOperation(float1, float2, operation){
+    const cents1 = Math.round(float1 * 100);
+    const cents2 = Math.round(float2 * 100);
+     switch (operation) {
+        case '+':
+        return (cents1 + cents2) / 100;
+        case '-':
+        return (cents1 - cents2) / 100;
+        case '*':
+        return (cents1 * cents2) / 10000;
+        case '/':
+        return (cents1 / cents2);
+}}
+
+console.log(fixedTwenty + fixedTen)
+console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
+console.log(0.3 == currencyOperation(0.1, 0.2, '+')) 
+console.log(currencyOperation(0.1, 0.2, '+'))   
+console.log(currencyOperation(0.3, 0.1, '-'))   
+console.log(currencyOperation(0.2, 3,   '*'))  
+console.log(currencyOperation(1,   4,   '/'))   
+
+OUTPUT: 0.200.10
+0.2 + 0.1 = 0.30000000000000004
+true
+0.3
+0.2
+0.6
+0.25
 =====================================
 D]
+let twentyCents = 0.20
+let tenCents = 0.10
+let fixedTwenty = twentyCents.toFixed(2);
+let fixedTen = tenCents.toFixed(2);
 
-OUTPUT:
-=====================================
-E]
+function currencyOperation(float1, float2, operation, numDecimals){
+    const cents1 = Math.round(float1 * 100);
+    const cents2 = Math.round(float2 * 100);
+    const validDecimals = Math.min(Math.max(numDecimals, 1), 10);
+    let result;
+     switch (operation) {
+        case '+':
+        result = (cents1 + cents2) / 100;
+        break;
+        case '-':
+        result = (cents1 - cents2) / 100;
+        break;
+        case '*':
+        result = (cents1 * cents2) / 10000;
+        break;
+        case '/':
+        result = (cents1 / cents2);
+        break;
+     }
+        return Number(result.toFixed(validDecimals));
+}
 
-OUTPUT:
+console.log(fixedTwenty + fixedTen)
+console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
+console.log(0.3 == currencyOperation(0.1, 0.2, '+'))
+console.log(currencyOperation(0.1, 0.2, '+'))
+console.log(currencyOperation(0.3, 0.1, '-'))
+console.log(currencyOperation(0.2, 3,   '*'))
+console.log(currencyOperation(1,   4,   '/'))
+console.log(currencyOperation(0.1, 0.2, '+'))
+console.log(currencyOperation(1, 3, '/', 4))
+
+OUTPUT: 0.200.10
+0.2 + 0.1 = 0.30000000000000004
+false
+0
+0
+1
+0
+0
+0.3333
 =====================================
 */
