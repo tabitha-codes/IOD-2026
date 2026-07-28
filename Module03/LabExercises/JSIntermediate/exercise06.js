@@ -4,35 +4,29 @@
 // Test with the following arrays and create another one of your own.
 const colors = ['red', 'green', 'blue', 'yellow', 'orange', 'red', 'blue', 'yellow']
 const testScores = [55, 84, 97, 63, 55, 32, 84, 91, 55, 43]
+
 console.log(unique(colors)) // [ 'red', 'green', 'blue', 'yellow', 'orange' ]
 console.log(unique(testScores)) // [ 55, 84, 97, 63, 32, 91, 43 ]
 
 
 
-
-
-
 /*
 MY ANSWERS:
+const colors = ['red', 'green', 'blue', 'yellow', 'orange', 'red', 'blue', 'yellow']
+const testScores = [55, 84, 97, 63, 55, 32, 84, 91, 55, 43]
 
-A]
+function unique(duplicatesArray){
+     const uniqueSet = new Set(duplicatesArray);
+    return Array.from(uniqueSet);  
+}
 
-OUTPUT:
-=====================================
-B]
-
-OUTPUT:
-=====================================
-C]
-
-OUTPUT:
-=====================================
-D]
+console.log(colors)
+console.log(unique(colors)) 
+console.log(unique(testScores)) 
 
 OUTPUT:
-=====================================
-E]
-
-OUTPUT:
+['red','green','blue', 'yellow','orange', 'red','blue', 'yellow']
+['red', 'green', 'blue', 'yellow', 'orange']
+[55, 84, 97, 63, 32, 91, 43]
 =====================================
 */
