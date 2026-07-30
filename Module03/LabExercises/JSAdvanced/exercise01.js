@@ -8,32 +8,17 @@ c) Modify makeCounter to take another argument incrementBy, which specifies how
 much each call to counter() should increase the counter value by.*/
 
 
-
-function makeCounter(startFrom, incrementBy) {
-let currentCount = startFrom;
-
+function makeCounter() {
+let currentCount = 0;
 return function() {
+currentCount++;
 console.log(currentCount)
-currentCount += incrementBy;
 return currentCount;
 };
 }
-// let counter1 = makeCounter();
-let counter1 = makeCounter(5, 10);
-let counter2 = makeCounter(3, 3);
-
-counter1();
-counter2();
-counter1();
-counter2();
-
-
-
-
-
-
-
-
+let counter1 = makeCounter();
+counter1(); // 1
+counter1(); // 2
 
 
 /* MY ANSWERS:
@@ -84,24 +69,27 @@ Output: 5
 100
 101
 =========================
-C]
+C]function makeCounter(startFrom, incrementBy) {
+let currentCount = startFrom;
 
+return function() {
+console.log(currentCount)
+currentCount += incrementBy;
+return currentCount;
+};
+}
+// let counter1 = makeCounter();
+let counter1 = makeCounter(5, 10);
+let counter2 = makeCounter(3, 3);
 
-Output:
-=========================
-D]
+counter1();
+counter2();
+counter1();
+counter2();
 
-
-Output:
-=========================
-E]
-
-
-Output:
-=========================
-F]
-
-
-Output:
+Output: 5
+3
+15
+6
 =========================
 */
