@@ -1,0 +1,203 @@
+<!-- This exercise asks me to create another git file for my calculator.
+https://github.com/tabitha-codes/Calculator.git
+
+Requirements:
+The application should take 2 numbers, and support 4
+operations (+, / , x , -) .
+You need to press the equals button to get the result
+displayed, and reset to clear it.
+
+1. List the requirements, in this case you have a total of 4
+requirements :
+a) Get data (two numbers)
+b) Choose an operator
+c) Get the result
+d) Reset the screen
+
+2. Sketch the application, so that you are sure about the correct
+functioning.
+3. You may use a flow diagram to help.
+4. Use a tool of your choice, like Figma, to design the application.
+5. Use the prototype ability and test it.
+
+Develop the application. Start from GIT - it is good practice to do
+things in a standard way.
+• Create a repository
+• Clone the repository locally
+• Create a branch for each feature -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+    <style>
+        * {                                   /* applies to EVERY element on the page */
+  box-sizing: border-box;             /* width now INCLUDES border + padding — no surprise overflow */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1.2rem;                  /* 1.2x the root font size */
+  font-weight: bold;
+  color: #fff;                        /* white text */
+  text-align: center;                 /* centers text horizontally everywhere (buttons inherit this) */
+}
+
+.calculator {
+  background-color: red;
+  border: 2.5px solid black;          /* shorthand: width + style + color in one line */
+  border-radius: 8%;
+  width: 470px;                       /* holds the 420px grid + 15px padding each side */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;             /* stacks screen + rows top to bottom */
+  align-items: center;                /* centers the screen and rows horizontally */
+  margin: 0 auto;                     /* centers the whole calculator on the page */
+}
+
+.screen{
+              width: 100%;
+            height: 50px;
+            text-align: right;
+            font-size: 1.5rem;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            background-color: #ffeb3b;
+            border-radius: 8px;
+            color: #333;
+  
+}
+
+.row {
+  height: 100px;
+  width: 420px;                       /* 4 buttons (360) + 3 gaps (60) = 420 */
+  display: flex;                      /* default direction = row → buttons sit side by side */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;                          /* space between buttons */
+}
+
+.other {
+  background-color: blue;             /* operator buttons */
+  border: 2.5px solid black;
+  border-radius: 10%;                 /* rounds the corners (not a full circle) */
+  height: 90px;
+  width: 90px;
+  display: flex;                      /* makes align-items actually work */
+  justify-content: center;
+  align-items: center;                /* centers the label vertically + horizontally */
+}
+
+.numbers {
+  background-color: aqua;             /* number buttons */
+  border: 2.5px solid black;
+  border-radius: 10%;
+  height: 90px;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spaceholder{
+  height: 90px;
+  width: 90px;
+}
+
+.numberzero {
+  background-color: aqua;
+  border: 2.5px solid black;
+  border-radius: 10%;
+  height: 90px;
+  width: 200px;                       /* same 2-column span as .clearbutton */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.equalother{
+  background-color: blue;
+  border: 2.5px solid black;
+  border-radius: 10%;
+  height: 200px;
+  width: 90px;                       /* same 2-column span as .clearbutton */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+}
+    </style>
+</head>
+<body>
+    
+<div class="calculator">
+    
+    <div class="screen">0</div>
+
+    <div class="row">
+    <button class="other" onclick="clearDisplay()">NUM Lock</button>
+    <button class="other" onclick="clearDisplay()">CLEAR</button>
+      <button class="other" onclick="appendOperation('/')">/</button>
+      <button class="other" onclick="appendOperation('*')">*</button>
+    </div>
+
+
+    <div class="row">
+    <button class="numbers" onclick="appendNumber('7')">7</button>
+    <button class="numbers" onclick="appendNumber('8')">8</button>
+    <button class="numbers" onclick="appendNumber('9')">9</button>
+    <button class="other" onclick="appendOperation('-')">-</button>
+    </div>
+
+    <div class="row">
+    <button class="numbers" onclick="appendNumber('4')">4</button>
+    <button class="numbers" onclick="appendNumber('5')">5</button>
+    <button class="numbers" onclick="appendNumber('6')">6</button>
+    <button class="other" onclick="appendOperation('+')">+</button>
+    </div>
+
+    <div class="row">
+    <button class="numbers" onclick="appendNumber('1')">1</button>
+    <button class="numbers" onclick="appendNumber('2')">2</button>
+    <button class="numbers" onclick="appendNumber('3')">3</button>
+    <div class="spaceholder"></div>
+    </div>
+
+    <div class="row">
+    <button class="numberzero" onclick="appendNumber('0')">0</button>
+    <button class="other" onclick="appendOperation('.')">.</button>
+    <button class="equalother" onclick="calculate()">=</button>
+    </div>
+</div>
+<script>
+    // UPDATING SCREEN WITH PRESSED NUMBER
+const screen = document.querySelector(".screen");
+function appendNumber(numbers) {
+  screen.textContent = numbers;  
+}
+
+// NUMBERS — build the number up instead of replacing
+function appendNumber(number) {
+  if (screen.textContent === "0") {
+    screen.textContent = number;      // replace the starting 0
+  } else {
+    screen.textContent += number;     // otherwise add onto what's there
+  }
+}
+
+// OPERATORS + decimal — just add the symbol to the screen
+function appendOperation(operation) {
+  screen.textContent += operation;
+}
+
+// EQUALS — work out the expression that's on the screen
+function calculate() {
+  screen.textContent = eval(screen.textContent);
+}
+
+// CLEAR — reset back to 0
+function clearDisplay() {
+  screen.textContent = "0";
+}
+</script>
+</body>
+</html>
