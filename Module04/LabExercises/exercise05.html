@@ -1,4 +1,4 @@
-/* Lab #5: Manage Data 1
+<!-- Lab #5: Manage Data 1
 In this lab you will show your understanding of populating
 simple templates with data.
 We are syncing what is on the screen with what is in the data.
@@ -42,10 +42,59 @@ Some prevent default behavior links:
 
 2. You can simply create a form without using an actual
 html <form> tag. Use text field inputs and a button
-with onclick event instead. */
+with onclick event instead.
 
 let news = [
-  { id: 1, title: "Election Results", content: "Newly elected minister..." },
-  { id: 2, title: "Sporting Success", content: "World Cup winners..." },
-  { id: 3, title: "Tornado Warning", content: "Residents should prepare..." },
+{ id: 1, title: "Election Results", content: "Newly elected minister..." },
+{ id: 2, title: "Sporting Success", content: "World Cup winners..." },
+{ id: 3, title: "Tornado Warning", content: "Residents should prepare..." },
+]; -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Channel</title>
+</head>
+<body>
+    <!-- template: the reusable markup for ONE news item -->
+    <template id="news-template">
+        <div class="news-item">
+            <h2 class="news-title"></h2>
+            <p class="news-content"></p>
+        </div>
+    </template>
+
+    <!-- container: JS clears this and refills it each cycle -->
+    <div id="news-list"></div>
+
+<script>
+
+let news = [
+{ id: 1, title: "Election Results", content: "Newly elected minister..." },
+{ id: 2, title: "Sporting Success", content: "World Cup winners..." },
+{ id: 3, title: "Tornado Warning", content: "Residents should prepare..." },
 ];
+
+function renderNews() {
+    const container = document.getElementById("news-list");
+
+    // 1. clear the container so we don't stack duplicates each cycle
+    container.innerHTML = "";
+
+    // 2. rebuild one item per news object
+    news.forEach((item) => {
+        const clone = document.getElementById("news-template").content.cloneNode(true);
+        clone.querySelector(".news-title").innerText = item.title;
+        clone.querySelector(".news-content").innerText = item.content;
+        container.appendChild(clone);
+    });
+}
+
+renderNews();                        // show immediately on load
+setInterval(renderNews, 5000);       // then re-sync every 5 seconds
+
+</script>
+</body>
+</html>
