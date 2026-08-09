@@ -58,6 +58,15 @@ let news = [
     <title>News Channel</title>
 </head>
 <body>
+     <!-- form to add a news item -->
+    <form id="news-form">
+        <input type="text" id="title-input" placeholder="Title" />
+        <input type="text" id="content-input" placeholder="Content" />
+        <button type="submit">Add News</button>
+    </form>
+
+    <button id="stop-btn">Stop auto-refresh</button>
+    
     <!-- template: the reusable markup for ONE news item -->
     <template id="news-template">
         <div class="news-item">
