@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luxon Dates</title>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
+</head>
+<body>
+    <h2>Luxon exercises</h2>
+    <div id="output"></div>
+
+    <script>
+        const DateTime = luxon.DateTime;
+
+        // --- inputs (swap in your own values) ---
+        const birthday = DateTime.fromISO('1990-06-15');   // <-- your birthdate here
+        const dateA = DateTime.fromISO('2021-03-10');       // two sample dates for Q3 & Q4
+        const dateB = DateTime.fromISO('2026-11-20');
+        const now = DateTime.now();
+
+        const out = document.getElementById('output');
+        const show = (label, value) => out.innerHTML += `<p><strong>${label}:</strong> ${value}</p>`;
+
+        // 1. days between birthdate and now
+        const days = Math.floor(now.diff(birthday, 'days').days);
+        show('Days since birth', days);
+
+        // 2. years, months, days between birthdate and now
+        const d = now.diff(birthday, ['years', 'months', 'days']).toObject();
+        show('Age', `${d.years} years, ${d.months} months, and ${Math.floor(d.days)} days`);
+
+        // 3. which of two dates is closest to now (compare absolute gaps)
+        const gapA = Math.abs(now.diff(dateA).as('milliseconds'));
+        const gapB = Math.abs(now.diff(dateB).as('milliseconds'));
+        const closest = gapA < gapB ? dateA : dateB;
+        show('Closest to today', closest.toLocaleString(DateTime.DATE_FULL));
+
+        // 4. is dateA before or after dateB?
+        const relation = dateA.toMillis() < dateB.toMillis() ? 'before' : 'after';
+        show('Date A is', `${relation} Date B`);
+
+        // 5. current time in London
+        const london = now.setZone('Europe/London').toLocaleString(DateTime.DATETIME_FULL);
+        show('Time in London', london);
+    </script>
+</body>
+</html>

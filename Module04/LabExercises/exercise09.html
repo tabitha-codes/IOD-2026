@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCharts</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+</head>
+
+<body>
+    <!-- Prepare a DOM with a defined width and height for ECharts -->
+    <div id="main" style="width: 900px; height: 600px;"></div>
+
+    <script type="text/javascript">
+        // 1) Initialize the chart on the #main div 
+        let myChart = echarts.init(document.getElementById('main'));
+
+        // 2) Fetch the products, then build the chart from the real data.
+        fetch('https://fakestoreapi.com/products')
+            .then((response) => response.json())
+            .then((products) => {
+                console.log(products); // peek at the data in the console
+
+                // 3) Count how many products are in each category.
+                const counts = {};
+                for (const product of products) {
+                    const category = product.category;
+                    counts[category] = (counts[category] || 0) + 1;
+                }
+
+                // 4) Split the counts into two parallel arrays for the chart.
+                const categories = Object.keys(counts);   // x-axis labels
+                const values     = Object.values(counts); // bar heights
+
+                // 5) Build the options using the REAL data, then draw.
+                let options = {
+                    title: { text: 'Fake Store Categories' },
+                    tooltip: {},
+                    xAxis: { data: categories },
+                    yAxis: { name: '# products' },
+                    series: [{
+                        name: '# products',
+                        type: 'bar',
+                        data: values
+                    }]
+                };
+
+                myChart.setOption(options);
+            })
+            .catch((error) => {
+                console.error('Could not load data:', error);
+            });
+    </script>
+</body>
+
+</html>

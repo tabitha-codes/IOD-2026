@@ -1,0 +1,26 @@
+.hero {
+    max-width: 720px;
+    margin: 60px auto 24px;
+    padding: 48px 44px;
+    background: linear-gradient(135deg, #1c1c1c 0%, #3a3f44 100%);
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+
+.hero-text {
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.quote {
+    max-width: 720px;
+    margin: 0 auto 60px;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 600;
+    color: #333;
+    text-align: center;   /* added — it used to inherit this from the global rule you removed */
+}

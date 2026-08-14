@@ -66,7 +66,7 @@ let news = [
     </form>
 
     <button id="stop-btn">Stop auto-refresh</button>
-    
+
     <!-- template: the reusable markup for ONE news item -->
     <template id="news-template">
         <div class="news-item">
@@ -88,12 +88,8 @@ let news = [
 
 function renderNews() {
     const container = document.getElementById("news-list");
-
-    // 1. clear the container so we don't stack duplicates each cycle
-    container.innerHTML = "";
-
-    // 2. rebuild one item per news object
-    news.forEach((item) => {
+    container.innerHTML = ""; // 1. clear the container so we don't stack duplicates each cycle
+    news.forEach((item) => { // 2. rebuild one item per news object
         const clone = document.getElementById("news-template").content.cloneNode(true);
         clone.querySelector(".news-title").innerText = item.title;
         clone.querySelector(".news-content").innerText = item.content;
@@ -101,8 +97,31 @@ function renderNews() {
     });
 }
 
+// --- Part 2: add news via the form ---
+const form = document.getElementById("news-form");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();                                   // stop the page reload
+
+    const title = document.getElementById("title-input").value;
+    const content = document.getElementById("content-input").value;
+    if (!title || !content) return;                           // skip empty submits
+
+    // build the new object and push it into the array
+    news.push({ id: news.length + 1, title: title, content: content });
+
+    form.reset();                                             // clear the inputs
+    renderNews();                                             // show it instantly (don't wait up to 5s)
+});
+
+// --- Extension: stop button ---
+const intervalId = setInterval(renderNews, 5000);             // save the id so I can cancel it
+document.getElementById("stop-btn").addEventListener("click", () => {
+    clearInterval(intervalId);
+});
+
+
 renderNews();                        // show immediately on load
-setInterval(renderNews, 5000);       // then re-sync every 5 seconds
+// setInterval(renderNews, 5000);       // then re-sync every 5 seconds
 
 </script>
 </body>

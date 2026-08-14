@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Bounce</title>
+    <style>
+        .box {
+            width: 80px;
+            height: 80px;
+            margin: 40px auto;                    /* centered, with room to fall */
+            background: #e24b4a;                   /* starting colour */
+
+            animation-name: bounce;               /* link to the @keyframes below */
+            animation-duration: 1.2s;
+            animation-iteration-count: infinite;  /* loop forever */
+        }
+
+        @keyframes bounce {
+            0%   { transform: translateY(0);     background: #e24b4a;
+                   animation-timing-function: ease-in; }   /* fall: speed up (gravity) */
+            50%  { transform: translateY(200px); background: #378add;
+                   animation-timing-function: ease-out; }  /* bottom: then slow on the way up */
+            100% { transform: translateY(0);     background: #e24b4a; } /* back to start */
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
