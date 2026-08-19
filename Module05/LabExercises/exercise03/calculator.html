@@ -30,6 +30,7 @@ label {
 </body>
 
 <script>
+    // ADD
     function doAdd() {
 let num1 = document.getElementById("firstNumber").value;
 let num2 = document.getElementById("secondNumber").value;
@@ -39,17 +40,57 @@ let num2 = document.getElementById("secondNumber").value;
             document.getElementById("addResult").value = data.result;
          })
         }
+// Subtract
+           function doMinus() {
+let num1 = document.getElementById("firstNumber").value;
+let num2 = document.getElementById("secondNumber").value;
+ fetch(`/calculator/subtract?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("subtractResult").value = data.result;
+         })
+        }
+// Multiplication
+                   function doTimes() {
+let num1 = document.getElementById("firstNumber").value;
+let num2 = document.getElementById("secondNumber").value;
+ fetch(`/calculator/multiply?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("multiplyResult").value = data.result;
+         })
+        }
+
+        // Divison
+                   function doDivide() {
+let num1 = document.getElementById("firstNumber").value;
+let num2 = document.getElementById("secondNumber").value;
+ fetch(`/calculator/divide?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("divideResult").value = data.result;
+         })
+        }
 </script>
 </html>
-
-
-
-
-
-
-
-
 <!--
+I selected 5 for the first number and 5 for the second. 
+tabit@DESKTOP-4T85GBC MINGW64 ~/OneDrive/Desktop/IOD-2026/Module05/LabExercises/exercise03 (master)
+$ node index.js
+Example app listening at http://localhost:3000
+0
+25
+0
+10
+10
+0
+25
+1
+
+
+
+
+
     <span id="result"></span>
     <div>Add Result: <span id="addResult"></span></div>
     <div>Subtract Result: <span id="subtractResult"></span></div>
