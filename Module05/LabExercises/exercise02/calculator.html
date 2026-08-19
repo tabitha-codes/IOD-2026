@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <title>Calculator Example</title>
+</head>
+
+<body>
+    <div>Result
+        <!-- <span id="result"></span> -->
+        <div>Add Result: <span id="addResult"></span></div>
+        <div>Subtract Result: <span id="subtractResult"></span></div>
+        <div>Multiply Result: <span id="multiplyResult"></span></div>
+        <div>Divide Result: <span id="divideResult"></span></div>
+    </div>
+</body>
+<script>
+    let num1 = 2;
+    let num2 = 4;
+    fetch(`/calculator/add?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("addResult").innerHTML = data.result;
+         }) //{"result":null} NaN
+
+    fetch(`/calculator/subtract?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("subtractResult").innerHTML = data.result;
+        })
+
+    fetch(`/calculator/divide?num1=${num1 = 10}&num2=${num2 = 0}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("multiplyResult").innerHTML = data.result;
+        })
+
+    fetch(`/calculator/multiply?num1=$num1=10&num2=2`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("divideResult").innerHTML = data.result;
+        })
+</script>
+
+</html>
+
+
+
+<!--
+OUTPUT:
+Result
+Add Result: 6
+Subtract Result: -2
+Multiply Result: Infinity
+Divide Result: NaN
+http://localhost:3000/calculator.html -->
