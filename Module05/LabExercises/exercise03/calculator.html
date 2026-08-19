@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <title>Calculator Example</title>
+    <style>
+        input,
+label {
+  margin: 0.4rem 0;
+}
+    </style>
+</head>
+
+<body><div>
+<div>First Number:<input type="number" id="firstNumber" name="result"/></div>
+
+<div>Second Number:<input type="number" id="secondNumber" name="result"/></div><br>
+
+<div>Add Result:<input type="number" id="addResult" name="result"/></div><br>
+<button onclick="doAdd()">Add</button>
+
+<div>Subtract Result:<input type="number" id="subtractResult" name="result"/></div><br>
+<button onclick="doMinus()">Subtract</button>
+
+<div>Multiply Result:<input type="number" id="multiplyResult" name="result"/></div><br>
+<button onclick="doTimes()">Multiply</button>
+
+<div>Divide Result:<input type="number" id="divideResult" name="result"/></div><br>
+<button onclick="doDivide()">Divide</button>
+
+</div>
+</body>
+
+<script>
+    function doAdd() {
+let num1 = document.getElementById("firstNumber").value;
+let num2 = document.getElementById("secondNumber").value;
+ fetch(`/calculator/add?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("addResult").value = data.result;
+         })
+        }
+</script>
+</html>
+
+
+
+
+
+
+
+
+<!--
+    <span id="result"></span>
+    <div>Add Result: <span id="addResult"></span></div>
+    <div>Subtract Result: <span id="subtractResult"></span></div>
+    <div>Multiply Result: <span id="multiplyResult"></span></div>
+    <div>Divide Result: <span id="divideResult">
+    </span></div>
+
+<script>
+    let num1 = 2;
+    let num2 = 4;
+    fetch(`/calculator/add?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("addResult").innerHTML = data.result;
+         }) //{"result":null} NaN
+
+    fetch(`/calculator/subtract?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("subtractResult").innerHTML = data.result;
+        })
+
+    fetch(`/calculator/divide?num1=${num1 = 10}&num2=${num2 = 0}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("multiplyResult").innerHTML = data.result;
+        })
+
+    fetch(`/calculator/multiply?num1=$num1=10&num2=2`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("divideResult").innerHTML = data.result;
+        })
+</script>
+
+-->
