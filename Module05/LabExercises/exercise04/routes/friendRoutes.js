@@ -55,16 +55,41 @@ router.get('/filter', (req, res) => {
 // [Object: null prototype] { letter: 'Z' }
 // [Object: null prototype] { letter: 'R' }
 
+// 2. Get information about this request from the headers
+router.get('/info', (req, res) => {
+    console.log(req.headers)
+
+// Modify this response to just return info on the user-agent, content-type and accept headers
+   res.json({
+        userAgent: req.headers['user-agent'],
+        contentType: req.headers['content-type'],
+        accept: req.headers['accept']
+    })
+})
+
+// http://localhost:3000/friends/info
+// {"userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.134.0 Chrome/148.0.7778.280 Electron/42.8.1 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"}
+// { host: 'localhost:3000',
+//   connection: 'keep-alive',
+//   'upgrade-insecure-requests': '1',
+//   'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.13
+// 4.0 Chrome/148.0.7778.280 Electron/42.8.1 Safari/537.36',
+//   accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8
+// ,application/signed-exchange;v=b3;q=0.7',
+//   'sec-fetch-site': 'none',
+//   'sec-fetch-mode': 'navigate',
+//   'sec-fetch-user': '?1',
+//   'sec-fetch-dest': 'document',
+//   'accept-encoding': 'gzip, deflate, br, zstd',
+//   'accept-language': 'en-US'
+// }
 
 
 
-// // 2. Get information about this request from the headers
-// router.get('/info', (req, res) => {
-//     console.log(req.headers)
 
-//     // Modify this response to just return info on the user-agent, content-type and accept headers
-//     res.json(req.headers)  
-// })
+
+
+
 
 // // 3. Dynamic request param endpoint - get the friend matching the specific ID ie. /friends/3
 // router.get('/:id', (req, res) => {
