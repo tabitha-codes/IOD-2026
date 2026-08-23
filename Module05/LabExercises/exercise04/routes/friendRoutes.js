@@ -84,44 +84,52 @@ router.get('/info', (req, res) => {
 //   'accept-language': 'en-US'
 // }
 
+// 3. Dynamic request param endpoint - get the friend matching the specific ID ie. /friends/3
+router.get('/:id', (req, res) => {
+    console.log(req.params)
+    let friendId = req.params.id; // 'id' here will be a value matching anything after the / in the request path
+
+    // Modify this function to find and return the friend matching the given ID, or a 404 if not found
+    // using .find() to search the friends array for an object where the id matches
+    // using == (not ===) because friendId from req.params is always a string, but friend.id is a number
+    let friend = friends.find(friend => friend.id == friendId);
+
+    // Modify this response with the matched friend, or a 404 if not found
+    if (friend) {
+        // friend was found - return it with a 200 status
+        res.status(200).json(friend)
+    } else {
+        // no friend matched this id - return a 404 with a clear error message
+        res.status(404).json({error: 'No friend found with ID ' + friendId})
+    }
+})
+
+// a POST request with data sent in the body of the request, representing a new friend to add to our list
+router.post('/', (req, res) => {
+    let newFriend = req.body; // FIRST add this line to index.js: app.use(express.json());
+    console.log(newFriend) // 'body' will now be an object containing data sent via the request body
+
+    // we can add some validation here to make sure the new friend object matches the right pattern
+    if (!newFriend.name || !newFriend.gender) {
+        res.status(500).json({error: 'Friend object must contain a name and gender'});
+        return;
+    }
+    else if (!newFriend.id) {
+        newFriend.id = friends.length + 1; // generate an ID if one is not present
+    }
+
+    // if the new friend is valid, add them to the list and return the successfully added object
+    friends.push(newFriend)
+    res.status(200).json(newFriend)
+})
+
+// http://localhost:3000/friends/3
+// [Object: null prototype] { id: '3' }
+// localhost:3000/friends/99
+// [Object: null prototype] { id: '99' }
 
 
-
-
-
-
-
-// // 3. Dynamic request param endpoint - get the friend matching the specific ID ie. /friends/3
-// router.get('/:id', (req, res) => {
-//     console.log(req.params)
-//     let friendId = req.params.id; // 'id' here will be a value matching anything after the / in the request path
-
-//     // Modify this function to find and return the friend matching the given ID, or a 404 if not found
-
-//     // Modify this response with the matched friend, or a 404 if not found
-//     res.json({result: 'Finding friend with ID ' + friendId})
-// })
-
-// // a POST request with data sent in the body of the request, representing a new friend to add to our list
-// router.post('/', (req, res) => {
-//     let newFriend = req.body; // FIRST add this line to index.js: app.use(express.json());
-//     console.log(newFriend) // 'body' will now be an object containing data sent via the request body
-
-//     // we can add some validation here to make sure the new friend object matches the right pattern
-//     if (!newFriend.name || !newFriend.gender) {
-//         res.status(500).json({error: 'Friend object must contain a name and gender'});
-//         return;
-//     }
-//     else if (!newFriend.id) {
-//         newFriend.id = friends.length + 1; // generate an ID if one is not present
-//     }
-
-//     // if the new friend is valid, add them to the list and return the successfully added object
-//     friends.push(newFriend)
-//     res.status(200).json(newFriend)
-// })
-
-// // 4. Complete this new route for a PUT request which will update data for an existing friend
+// 4. Complete this new route for a PUT request which will update data for an existing friend
 // router.put('/:id', (req, res) => {
 //     let friendId = req.params.id;
 //     let updatedFriend = req.body;
