@@ -130,14 +130,27 @@ router.post('/', (req, res) => {
 
 
 // 4. Complete this new route for a PUT request which will update data for an existing friend
-// router.put('/:id', (req, res) => {
-//     let friendId = req.params.id;
-//     let updatedFriend = req.body;
+router.put('/:id', (req, res) => {
+    let friendId = req.params.id;
+    let updatedFriend = req.body;
 
-//     // Replace the old friend data for friendId with the new data from updatedFriend
+    // Replace the old friend data for friendId with the new data from updatedFriend
+    // findIndex gives us the position in the array (not the object itself) so we can overwrite it directly
+    // using == not === for the same reason as the GET /:id route - friendId is a string, friend.id is a number
+    let friendIndex = friends.findIndex(friend => friend.id == friendId);
 
-//     // Modify this response with the updated friend, or a 404 if not found
-//     res.json({result: 'Updated friend with ID ' + friendId, data: updatedFriend})
-// })
+    if (friendIndex === -1) {
+        // findIndex returns -1 when nothing matches - no friend exists with this id
+        res.status(404).json({error: 'No friend found with ID ' + friendId});
+        return;
+    }
+
+    // keep the original id intact even if the request body didn't include one,
+    // then overwrite the rest of the fields with whatever was sent in updatedFriend
+    friends[friendIndex] = { ...friends[friendIndex], ...updatedFriend, id: friends[friendIndex].id };
+
+    // Modify this response with the updated friend, or a 404 if not found
+    res.status(200).json({result: 'Updated friend with ID ' + friendId, data: friends[friendIndex]})
+})
 
 module.exports = router;
