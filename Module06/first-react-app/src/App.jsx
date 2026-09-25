@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import Greetings from '../components/Greetings'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,7 +31,18 @@ function App() {
         </button>
       </section>
 
-      <div className="ticks"></div>
+
+
+ {/*==Exercise 01============================================================== */}
+{/* <Greetings>Hello World</Greetings> */}
+<Greetings name="John">Nice to meet you</Greetings>
+
+{/*================================================================ */}
+{/*================================================================ */}
+{/*================================================================ */}
+{/*================================================================ */}
+
+      {/* <div className="ticks"></div>
 
       <section id="next-steps">
         <div id="docs">
@@ -114,7 +126,7 @@ function App() {
       </section>
 
       <div className="ticks"></div>
-      <section id="spacer"></section>
+      <section id="spacer"></section> */}
     </>
   )
 }
