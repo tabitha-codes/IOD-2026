@@ -6,6 +6,7 @@ import './App.css'
 import Greetings from '../components/Greetings' // Exercise 01
 import BigCats from '../components/BigCats' // Exercise 02
 import Emoji from '../components/Emoji' // Exercise 03
+import Calculator from '../components/Calculator'  // Exercise 06
 
 function App() {
   const [count, setCount] = useState(0)
@@ -33,20 +34,15 @@ function App() {
         </button>
       </section>
 
-
-
  {/*==Exercise 01============================================================== */}
 {/* <Greetings>Hello World</Greetings> */}
 <Greetings name="John">Nice to meet you</Greetings>
-
-{/*==Exercise 02============================================================== */}
+{/*==Exercise 02,04,05=========================================================== */}
 <BigCats/>
 {/*==Exercise 03============================================================== */}
 <Emoji />
-{/*==Exercise 04============================================================== */}
-{/*==Exercise 05============================================================== */}
 {/*==Exercise 06============================================================== */}
-{/*==Exercise 07============================================================== */}
+<Calculator />
 
       {/* <div className="ticks"></div>
 
