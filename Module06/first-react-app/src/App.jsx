@@ -3,7 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import Greetings from '../components/Greetings'
+import Greetings from '../components/Greetings' // Exercise 01
+import BigCats from '../components/BigCats' // Exercise 02
+import Emoji from '../components/Emoji' // Exercise 03
 
 function App() {
   const [count, setCount] = useState(0)
@@ -37,10 +39,14 @@ function App() {
 {/* <Greetings>Hello World</Greetings> */}
 <Greetings name="John">Nice to meet you</Greetings>
 
-{/*================================================================ */}
-{/*================================================================ */}
-{/*================================================================ */}
-{/*================================================================ */}
+{/*==Exercise 02============================================================== */}
+<BigCats/>
+{/*==Exercise 03============================================================== */}
+<Emoji />
+{/*==Exercise 04============================================================== */}
+{/*==Exercise 05============================================================== */}
+{/*==Exercise 06============================================================== */}
+{/*==Exercise 07============================================================== */}
 
       {/* <div className="ticks"></div>
 
