@@ -11,20 +11,44 @@
 <body>
     <h2>Welcome to Socket Chat</h2>
 
-<!-- where messages appear, and the form to send one -->
-  <ul id="messages"></ul>
-  <form id="form">
-    <input id="input" autocomplete="off" />
-    <button>Send</button>
-  </form>
-
-
-
+    <!-- where messages appear, and the form to send one -->
+    <ul id="messages"></ul>
+    <form id="form">
+        <input id="input" autocomplete="off" />
+        <button>Send</button>
+    </form>
 
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();
+        let form = document.getElementById('form');
+        let input = document.getElementById('input');
+        let messages = document.getElementById('messages');
+
+          // ask for a nickname once ("Anonymous" if they cancel or leave it blank)
+    let nickname = prompt('Choose a nickname:') || 'Anonymous';
+
+        // adds one line to the message list
+        // textContent (not innerHTML) stops people from injecting HTML into the page
+        function addMessage(text) {
+            let item = document.createElement('li');
+            item.textContent = text;
+            messages.appendChild(item);
+        }
+
+        // send a message when the form is submitted
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // stops the page from reloading
+            if (input.value) {
+                socket.emit('chat message', input.value);
+                input.value = '';
+            }
+        });
+
+        // show messages from the server on the page instead of the console
+        socket.on('chat message', (msg) => addMessage(msg));
+        socket.on('system message', (msg) => addMessage(msg));
         socket.on('connection', msg => console.log(msg))
     </script>
 </body>
