@@ -29,6 +29,11 @@
           // ask for a nickname once ("Anonymous" if they cancel or leave it blank)
     let nickname = prompt('Choose a nickname:') || 'Anonymous';
 
+      // send the nickname every time the connection opens
+    socket.on('connect', () => {
+      socket.emit('join', nickname);
+    });
+
         // adds one line to the message list
         // textContent (not innerHTML) stops people from injecting HTML into the page
         function addMessage(text) {

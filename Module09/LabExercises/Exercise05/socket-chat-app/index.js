@@ -10,24 +10,21 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-io.on("connection", (socket) => {
-  io.emit("connection", "a user connected");
-});
+// io.on("connection", (socket) => {
+//   io.emit("connection", "a user connected");
+// });
 
-io.on('connection', (socket) => {
+io.on("connection", (socket) => {
   // default name, in case a message arrives before "join"
-  socket.data.nickname = 'Anonymous';
+  socket.data.nickname = "Anonymous";
 
   // the browser sends its nickname right after connecting
-  socket.on('join', (nickname) => {
-    if (typeof nickname === 'string' && nickname.trim()) {
+  socket.on("join", (nickname) => {
+    if (typeof nickname === "string" && nickname.trim()) {
       socket.data.nickname = nickname.trim().slice(0, 20); // max 20 characters
     }
-    io.emit('system message', `${socket.data.nickname} joined the chat`);
+    io.emit("system message", `${socket.data.nickname} joined the chat`);
   });
-
-io.on("connection", (socket) => {
-  io.emit("system message", "A user connected");
 
   // when one person sends a message, send it to everyone
   // updated- messages now start with the sender's nickname
@@ -44,4 +41,4 @@ io.on("connection", (socket) => {
 
 server.listen(3000, () => {
   console.log("listening on *:3000");
-})});
+});
