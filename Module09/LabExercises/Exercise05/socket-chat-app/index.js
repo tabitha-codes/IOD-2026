@@ -29,7 +29,8 @@ io.on("connection", (socket) => {
   // when one person sends a message, send it to everyone
   // updated- messages now start with the sender's nickname
   socket.on('chat message', (msg) => {
-    io.emit('chat message', `${socket.data.nickname}: ${msg}`);
+   // io.emit('chat message', `${socket.data.nickname}: ${msg}`);
+   socket.broadcast.emit("chat message", `${socket.data.nickname}: ${msg}`);
   });
 
   // ext: tell everyone when someone disconnects

@@ -45,8 +45,10 @@
         // send a message when the form is submitted
         form.addEventListener('submit', (e) => {
             e.preventDefault(); // stops the page from reloading
+            let text = input.value.trim();
             if (input.value) {
                 socket.emit('chat message', input.value);
+                addMessage(`You: ${text}`); // show my own message instantly
                 input.value = '';
             }
         });
