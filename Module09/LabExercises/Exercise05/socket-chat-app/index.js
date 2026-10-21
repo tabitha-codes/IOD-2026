@@ -28,15 +28,26 @@ io.on("connection", (socket) => {
 
   // when one person sends a message, send it to everyone
   // updated- messages now start with the sender's nickname
-  socket.on('chat message', (msg) => {
-   // io.emit('chat message', `${socket.data.nickname}: ${msg}`);
-   socket.broadcast.emit("chat message", `${socket.data.nickname}: ${msg}`);
+  socket.on("chat message", (msg) => {
+    // io.emit('chat message', `${socket.data.nickname}: ${msg}`);
+    if (typeof msg !== "string" || !msg.trim()) return; // ignore empty or non-text messages
+    socket.broadcast.emit("chat message", `${socket.data.nickname}: ${msg.trim().slice(0, 500)}`);
+  });
+
+  // tell everyone else when this user starts or stops typing
+  socket.on("typing", (isTyping) => {
+    socket.broadcast.emit("typing", {
+      id: socket.id,
+      name: socket.data.nickname,
+      isTyping: Boolean(isTyping),
+    });
   });
 
   // ext: tell everyone when someone disconnects
   // updated- the disconnect message now uses the nickname
-  socket.on('disconnect', () => {
-    io.emit('system message', `${socket.data.nickname} left the chat`);
+  socket.on("disconnect", () => {
+    socket.broadcast.emit("typing", { id: socket.id, name: socket.data.nickname, isTyping: false });
+    io.emit("system message", `${socket.data.nickname} left the chat`);
   });
 });
 

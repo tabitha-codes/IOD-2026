@@ -13,6 +13,7 @@
 
     <!-- where messages appear, and the form to send one -->
     <ul id="messages"></ul>
+    <p id="typing"></p>
     <form id="form">
         <input id="input" autocomplete="off" />
         <button>Send</button>
@@ -25,14 +26,15 @@
         let form = document.getElementById('form');
         let input = document.getElementById('input');
         let messages = document.getElementById('messages');
+        let typingLine = document.getElementById('typing');
 
-          // ask for a nickname once ("Anonymous" if they cancel or leave it blank)
-    let nickname = prompt('Choose a nickname:') || 'Anonymous';
+        // ask for a nickname once ("Anonymous" if they cancel or leave it blank)
+        let nickname = prompt('Choose a nickname:') || 'Anonymous';
 
-      // send the nickname every time the connection opens
-    socket.on('connect', () => {
-      socket.emit('join', nickname);
-    });
+        // send the nickname every time the connection opens
+        socket.on('connect', () => {
+            socket.emit('join', nickname);
+        });
 
         // adds one line to the message list
         // textContent (not innerHTML) stops people from injecting HTML into the page
@@ -42,22 +44,66 @@
             messages.appendChild(item);
         }
 
+
+        // sending my typing status
+        let isTyping = false;  // am I currently marked as typing?
+        let typingTimer;       // the 1-second "stopped typing" countdown
+
+        function stopTyping() {
+            clearTimeout(typingTimer);
+            if (isTyping) {
+                isTyping = false;
+                socket.emit('typing', false);
+            }
+        }
+
+        input.addEventListener('input', () => {
+            // only tell the server when I start typing, not on every key
+            if (!isTyping) {
+                isTyping = true;
+                socket.emit('typing', true);
+            }
+            // restart the countdown on every key press
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(stopTyping, 1000);
+        });
+
         // send a message when the form is submitted
         form.addEventListener('submit', (e) => {
             e.preventDefault(); // stops the page from reloading
             let text = input.value.trim();
-            if (input.value) {
-                socket.emit('chat message', input.value);
-                addMessage(`You: ${text}`); // show my own message instantly
+            if (text) { // checks the UNtrimmed value
+                socket.emit('chat message', text); //  sends the UNtrimmed value
+                addMessage(`You: ${text}`); // show my own message instantly - shows the trimmed value
                 input.value = '';
+                stopTyping();               // I sent it, so I'm no longer typing
             }
         });
 
         // show messages from the server on the page instead of the console
         socket.on('chat message', (msg) => addMessage(msg));
         socket.on('system message', (msg) => addMessage(msg));
-        socket.on('connection', msg => console.log(msg))
+        // socket.on('connection', msg => console.log(msg))
+
+        // receiving who else is typing 
+        let typingUsers = {}; // { socketId: nickname } for everyone typing right now
+
+        socket.on('typing', (data) => {
+            if (data.isTyping) {
+                typingUsers[data.id] = data.name;  // add them
+            } else {
+                delete typingUsers[data.id];       // remove them
+            }
+
+            let names = Object.values(typingUsers);
+            if (names.length === 0) {
+                typingLine.textContent = '';
+            } else if (names.length === 1) {
+                typingLine.textContent = `${names[0]} is typing...`;
+            } else {
+                typingLine.textContent = `${names.join(', ')} are typing...`;
+            }
+        });
     </script>
 </body>
-
 </html>
