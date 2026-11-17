@@ -1,0 +1,339 @@
+/* ===========NAVBAR=========== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--blue);
+}
+
+.logo {
+  color: var(--white);
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* NavLink adds "active" to the page I'm on */
+.navbar nav a.active {
+  border-bottom: 2px solid var(--white);
+}
+
+/* ===========FOOTER=========== */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ===========BUTTONS=========== */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--dark-blue);
+}
+
+.btn-small {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.btn-delete {
+  background-color: var(--red);
+}
+
+.btn-delete:hover {
+  background-color: #8e1c1c;
+}
+
+.btn-plain {
+  background-color: transparent;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.btn-plain:hover {
+  background-color: #e8f1fd;
+}
+
+/* ===========SHARED=========== */
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.card h3 {
+  margin: 0 0 0.25rem;
+}
+
+.card p {
+  margin: 0.25rem 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.error {
+  color: var(--red);
+}
+
+.price {
+  font-weight: bold;
+}
+
+.stars {
+  color: #f5a623;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+/* ===========HOME PAGE=========== */
+.hero {
+  padding: 4rem 1rem;
+  text-align: center;
+  background-color: #e8f1fd;
+}
+
+.hero h1 {
+  max-width: 700px;
+  margin: 0 auto 1rem;
+  font-size: 2.2rem;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.search-form input,
+.filter-input {
+  flex: 1;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.how-it-works {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* ===========APARTMENTS PAGE=========== */
+.filter-input {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.apartment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.apartment-card {
+  color: var(--text);
+  text-decoration: none;
+  border-top: 4px solid var(--blue);
+}
+
+.apartment-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.review-count {
+  color: var(--blue);
+}
+
+/* ===========DETAILS PAGE=========== */
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 2rem;
+}
+
+.details-header h1 {
+  margin: 0;
+}
+
+.rating-box {
+  text-align: center;
+  min-width: 150px;
+}
+
+.big-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.reviews-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-card {
+  margin-bottom: 1rem;
+}
+
+.review-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.tag.tour {
+  background-color: #e8f1fd;
+  color: var(--dark-blue);
+}
+
+.tag.resident {
+  background-color: #e6f4ea;
+  color: #1e7e34;
+}
+
+.agent-box {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--bg);
+  border-left: 3px solid var(--blue);
+}
+
+.review-photo {
+  display: block;
+  max-height: 300px;
+  margin-top: 0.75rem;
+  border-radius: 6px;
+}
+
+.review-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+/* ===========REVIEW FORM=========== */
+.form-page {
+  max-width: 600px;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-weight: bold;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea {
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: normal;
+}
+
+.review-form fieldset {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.review-form legend {
+  font-weight: bold;
+}
+
+.review-form label.radio {
+  flex-direction: row;
+  align-items: center;
+  font-weight: normal;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ===========SMALL SCREENS=========== */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+}

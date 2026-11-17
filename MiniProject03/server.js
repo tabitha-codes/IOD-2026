@@ -1,0 +1,14 @@
+// ===========START THE SERVER===========
+// Loads .env, connects to MongoDB, then starts listening.
+require("dotenv").config();
+
+const app = require("./app");
+const connectDB = require("./dbConnect");
+
+const PORT = process.env.PORT || 8082;
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+});

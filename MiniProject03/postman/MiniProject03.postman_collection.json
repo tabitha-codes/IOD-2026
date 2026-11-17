@@ -1,0 +1,185 @@
+{
+  "info": {
+    "name": "Mini Project 3 - Rick and Morty API",
+    "description": "My CRUD requests. Run npm run seed first, then npm start.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8082"
+    },
+    {
+      "key": "characterId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Welcome",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": []
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Get data",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/characters",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "characters"
+          ]
+        },
+        "description": "All characters from the seed."
+      }
+    },
+    {
+      "name": "Get data with filters",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/characters?status=Alive&species=Human",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "characters"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "Alive"
+            },
+            {
+              "key": "species",
+              "value": "Human"
+            }
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Post data",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/characters",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "characters"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Tabitha Sanchez\",\n  \"status\": \"Alive\",\n  \"species\": \"Human\",\n  \"gender\": \"Female\",\n  \"origin\": \"Earth (C-137)\",\n  \"location\": \"Citadel of Ricks\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Saves the new _id so the next requests can use it",
+              "pm.collectionVariables.set(\"characterId\", pm.response.json()._id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get one Character",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/characters/{{characterId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "characters",
+            "{{characterId}}"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Update character",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/characters/{{characterId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "characters",
+            "{{characterId}}"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Dead\",\n  \"location\": \"Earth (Replacement Dimension)\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete character",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/characters/{{characterId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "characters",
+            "{{characterId}}"
+          ]
+        },
+        "description": ""
+      }
+    }
+  ]
+}
