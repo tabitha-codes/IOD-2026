@@ -1,0 +1,77 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My Calculator Project",
+    "description": "My User Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Calculator",
+      "description": "API for Calculus in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/calculator/add": {
+      "get": {
+        "tags": ["Calculator"],
+        "summary": "Add 2 numbers",
+        "parameters": [
+          { "name": "num1", "in": "query", "description": "The first number", "required": true, "type": "number" },
+          { "name": "num2", "in": "query", "description": "The second number", "required": true, "type": "number" }
+        ],
+        "responses": {
+          "200": { "description": "Returns the sum of num1 and num2" }
+        }
+      }
+    },
+    "/calculator/subtract": {
+      "get": {
+        "tags": ["Calculator"],
+        "summary": "Subtract 2 numbers",
+        "parameters": [
+          { "name": "num1", "in": "query", "description": "The first number", "required": true, "type": "number" },
+          { "name": "num2", "in": "query", "description": "The second number", "required": true, "type": "number" }
+        ],
+        "responses": {
+          "200": { "description": "Returns num1 minus num2" }
+        }
+      }
+    },
+    "/calculator/multiply": {
+      "get": {
+        "tags": ["Calculator"],
+        "summary": "Multiply 2 numbers",
+        "parameters": [
+          { "name": "num1", "in": "query", "description": "The first number", "required": true, "type": "number" },
+          { "name": "num2", "in": "query", "description": "The second number", "required": true, "type": "number" }
+        ],
+        "responses": {
+          "200": { "description": "Returns num1 multiplied by num2" }
+        }
+      }
+    },
+    "/calculator/divide": {
+      "get": {
+        "tags": ["Calculator"],
+        "summary": "Divide 2 numbers",
+        "parameters": [
+          { "name": "num1", "in": "query", "description": "The first number (dividend)", "required": true, "type": "number" },
+          { "name": "num2", "in": "query", "description": "The second number (divisor)", "required": true, "type": "number" }
+        ],
+        "responses": {
+          "200": { "description": "Returns num1 divided by num2" }
+        }
+      }
+    }
+  }
+}
