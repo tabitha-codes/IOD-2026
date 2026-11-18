@@ -21,6 +21,6 @@ docker push tabithacodes/calculator
 Then I went to http://localhost:7000 to see it running.
 
 ## MY DOCKER HUB IMAGE
-(link goes here)
+((https://hub.docker.com/repository/docker/tabithacodes/calculator/general))
 
 Notes Ref: Module 10 Part 1 slides
