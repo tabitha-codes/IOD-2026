@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <title>Calculator Example</title>
+    <style>
+        input,
+label {
+  margin: 0.4rem 0;
+}
+    </style>
+</head>
+
+<body><div>
+<div>First Number:<input type="number" id="firstNumber" name="result"/></div>
+
+<div>Second Number:<input type="number" id="secondNumber" name="result"/></div><br>
+
+<div>Add Result:<input type="number" id="addResult" name="result"/></div><br>
+<button onclick="doAdd()">Add</button>
+
+<div>Subtract Result:<input type="number" id="subtractResult" name="result"/></div><br>
+<button onclick="doMinus()">Subtract</button>
+
+<div>Multiply Result:<input type="number" id="multiplyResult" name="result"/></div><br>
+<button onclick="doTimes()">Multiply</button>
+
+<div>Divide Result:<input type="number" id="divideResult" name="result"/></div><br>
+<button onclick="doDivide()">Divide</button>
+
+</div>
+</body>
+
+<script>
+    // ADD
+    function doAdd() {
+let num1 = document.getElementById("firstNumber").value;
+let num2 = document.getElementById("secondNumber").value;
+ fetch(`/calculator/add?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("addResult").value = data.result;
+         })
+        }
+// Subtract
+           function doMinus() {
+let num1 = document.getElementById("firstNumber").value;
+let num2 = document.getElementById("secondNumber").value;
+ fetch(`/calculator/subtract?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("subtractResult").value = data.result;
+         })
+        }
+// Multiplication
+                   function doTimes() {
+let num1 = document.getElementById("firstNumber").value;
+let num2 = document.getElementById("secondNumber").value;
+ fetch(`/calculator/multiply?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("multiplyResult").value = data.result;
+         })
+        }
+
+        // Divison
+                   function doDivide() {
+let num1 = document.getElementById("firstNumber").value;
+let num2 = document.getElementById("secondNumber").value;
+ fetch(`/calculator/divide?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("divideResult").value = data.result;
+         })
+        }
+</script>
+</html>
+<!--
+
+-->
